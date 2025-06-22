@@ -37,11 +37,23 @@ function CreateCabinForm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit, onError)}>
-      <FormRow label="Maximum capacity" error={errors?.name?.message}>
+      <FormRow label="Cabin name" error={errors?.name?.message}>
+        <Input 
+          type="text"
+          id="name"
+          disabled={isCreating}
+          {...register("name", {
+            required: "This field is required",
+          })}
+        />
+      </FormRow>
+
+      <FormRow label="Maximum capacity" error={errors?.maxCapacity?.message}>
         {/* <Label htmlFor="maxCapacity">Maximum capacity</Label> */}
         <Input
           type="number"
           id="maxCapacity"
+          disabled={isCreating}
           {...register("maxCapacity", {
             required: "This field is required",
             min: {
@@ -52,11 +64,12 @@ function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow>
+      <FormRow label="Regular Price" error={errors?.regularPrice?.message}>
         {/* <Label htmlFor="regularPrice">Regular price</Label> */}
         <Input
           type="number"
           id="regularPrice"
+          disabled={isCreating}
           {...register("regularPrice", {
             required: "This field is required",
             min: {
@@ -67,12 +80,13 @@ function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow>
+      <FormRow label="Discount" error={errors?.discount?.message}>
         {/* <Label htmlFor="discount">Discount</Label> */}
         <Input
           type="number"
           id="discount"
           defaultValue={0}
+          disabled={isCreating}
           {...register("discount", {
             required: "This field is required",
             validate: (value) =>
@@ -82,19 +96,20 @@ function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow>
+      <FormRow label="Description" error={errors?.description?.message}>
         {/* <Label htmlFor="description">Description for website</Label> */}
         <Textarea
           type="number"
           id="description"
           defaultValue=""
+          disabled={isCreating}
           {...register("description", {
             required: "This field is required",
           })}
         />
       </FormRow>
 
-      <FormRow>
+      <FormRow label="Cabin Image" error={errors?.image?.message}>
         {/* <Label htmlFor="image">Cabin photo</Label> */}
         <FileInput id="image" accept="image/*" {...register("image")} />
       </FormRow>
