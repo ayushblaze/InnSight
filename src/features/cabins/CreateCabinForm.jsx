@@ -27,8 +27,7 @@ function CreateCabinForm() {
   });
 
   function onSubmit(data) {
-    console.log("From form:", data);
-    mutate(data);
+    mutate({...data, image: data.image[0]});
   }
 
   function onError(errors) {
@@ -38,7 +37,7 @@ function CreateCabinForm() {
   return (
     <Form onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow label="Cabin name" error={errors?.name?.message}>
-        <Input 
+        <Input
           type="text"
           id="name"
           disabled={isCreating}
@@ -72,10 +71,6 @@ function CreateCabinForm() {
           disabled={isCreating}
           {...register("regularPrice", {
             required: "This field is required",
-            min: {
-              value: 1,
-              message: "Capacity should at least be 1",
-            },
           })}
         />
       </FormRow>
@@ -111,7 +106,11 @@ function CreateCabinForm() {
 
       <FormRow label="Cabin Image" error={errors?.image?.message}>
         {/* <Label htmlFor="image">Cabin photo</Label> */}
-        <FileInput id="image" accept="image/*" {...register("image")} />
+        <FileInput
+          id="image"
+          accept="image/*"
+          {...register("image", { required: "This field is required" })}
+        />
       </FormRow>
 
       <FormRow>
