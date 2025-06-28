@@ -12,26 +12,49 @@ const Cabin = styled.div`
   font-weight: 600;
   color: var(--color-grey-600);
   font-family: "Sono";
+  word-break: break-word;
+  @media (max-width: 700px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Stacked = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  min-width: 0;
 
   & span:first-child {
     font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @media (max-width: 700px) {
+      font-size: 1.1rem;
+    }
   }
 
   & span:last-child {
     color: var(--color-grey-500);
     font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @media (max-width: 700px) {
+      font-size: 1rem;
+    }
   }
 `;
 
 const Amount = styled.div`
   font-family: "Sono";
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @media (max-width: 700px) {
+    font-size: 1.1rem;
+  }
 `;
 
 function BookingRow({
@@ -44,8 +67,8 @@ function BookingRow({
     numGuests,
     totalPrice,
     status,
-    guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
+    Guests: { fullName: guestName, email },
+    Cabins: { name: cabinName },
   },
 }) {
   const statusToTagName = {

@@ -69,6 +69,9 @@ const GlobalStyles = createGlobalStyle`
 
 html {
   font-size: 62.5%;
+  @media (max-width: 700px) {
+    font-size: 55%;
+  }
 }
 
 body {
@@ -79,6 +82,7 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   font-size: 1.6rem;
+  overflow-x: hidden;
 }
 
 input,
@@ -136,11 +140,10 @@ h6 {
   hyphens: auto;
 }
 
-img {
+img, picture, video, canvas, svg {
+  display: block;
   max-width: 100%;
-
-  /* For dark mode */
-  filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
+  height: auto;
 }
 
 /*

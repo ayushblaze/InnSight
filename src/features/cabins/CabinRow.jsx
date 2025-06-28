@@ -35,17 +35,35 @@ const Cabin = styled.div`
   font-weight: 600;
   color: var(--color-grey-600);
   font-family: "Sono";
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @media (max-width: 700px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Price = styled.div`
   font-family: "Sono";
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @media (max-width: 700px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const Discount = styled.div`
   font-family: "Sono";
   font-weight: 500;
   color: var(--color-green-700);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @media (max-width: 700px) {
+    font-size: 1.1rem;
+  }
 `;
 
 function CabinRow({ cabin }) {
