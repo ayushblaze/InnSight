@@ -56,7 +56,7 @@
 
 ## 🗄️ Database Schema
 
-### cabins
+### Cabins
 | Field         | Type    | Description                | Key         |
 |---------------|---------|----------------------------|-------------|
 | id            | int     | Unique cabin ID            | PK          |
@@ -67,7 +67,7 @@
 | image         | string  | Image URL                  |             |
 | description   | string  | Cabin description          |             |
 
-### guests
+### Guests
 | Field         | Type    | Description                | Key         |
 |---------------|---------|----------------------------|-------------|
 | id            | int     | Unique guest ID            | PK          |
@@ -77,7 +77,7 @@
 | nationalID    | string  | National ID/passport       |             |
 | countryFlag   | string  | Flag image URL             |             |
 
-### bookings
+### Bookings
 | Field         | Type    | Description                | Key         |
 |---------------|---------|----------------------------|-------------|
 | id            | int     | Unique booking ID          | PK          |
