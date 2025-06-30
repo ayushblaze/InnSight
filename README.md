@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/InnSight-Icon.png" alt="InnSight Logo" width="80" style="vertical-align:middle; margin-right: 16px;"/>
+  <img src="public/InnSight-Icon.png" alt="InnSight Logo" width="100" height="100" style="vertical-align:middle; margin-right: 16px;"/>
 </p>
 
 <p align="center">
