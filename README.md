@@ -130,7 +130,7 @@
 
 ## 🎬 Demo
 
-> _No screenshots or video demo found. To add, place images or a video in the `public/` folder and update this section!_
+> _Coming Soon!_
 
 ---
 
