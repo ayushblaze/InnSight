@@ -18,6 +18,13 @@ const StyledToggle = styled.button`
   transform: translateX(0.8rem);
   transition: all 0.2s;
 
+  min-width: 2.8rem;
+  min-height: 2.8rem;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &:hover {
     background-color: var(--color-grey-100);
   }
@@ -38,6 +45,28 @@ const StyledList = styled.ul`
 
   left: ${(props) => props.position?.x}px;
   top: ${(props) => props.position?.y}px;
+
+  min-width: 180px;
+  max-width: 90vw;
+  z-index: 2000;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  /* Prevent overflow off right/bottom of viewport */
+  @media (min-width: 0px) {
+    right: auto;
+    bottom: auto;
+    transform: translateX(
+      ${(props) =>
+        props.position &&
+        props.position.x + 200 > window.innerWidth
+          ? `-100%`
+          : `0`}
+    );
+    /* If menu would go off bottom, shift up */
+    max-height: calc(100vh - ${(props) => props.position?.y || 0}px - 16px);
+    overflow-y: auto;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -62,6 +91,11 @@ const StyledButton = styled.button`
     height: 1.6rem;
     color: var(--color-grey-400);
     transition: all 0.3s;
+  }
+
+  & span {
+    white-space: normal;
+    word-break: break-word;
   }
 `;
 

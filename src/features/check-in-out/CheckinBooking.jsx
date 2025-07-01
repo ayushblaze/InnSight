@@ -6,8 +6,24 @@ import Heading from "../../ui/Heading";
 import ButtonGroup from "../../ui/ButtonGroup";
 import Button from "../../ui/Button";
 import ButtonText from "../../ui/ButtonText";
+import Checkbox from "../../ui/Checkbox";
 
 import { useMoveBack } from "../../hooks/useMoveBack";
+import { useBooking } from "../bookings/useBooking";
+import Spinner from "../../ui/Spinner";
+import { useEffect, useState } from "react";
+import { formatCurrency } from "../../utils/helpers";
+import { useCheckin } from "./useCheckin";
+
+const Highlight = styled.span`
+  color: var(--color-brand-700);
+  font-weight: 700;
+`;
+
+const GuestName = styled.span`
+  font-weight: 600;
+  color: var(--color-grey-800);
+`;
 
 const Box = styled.div`
   /* Box */
@@ -18,20 +34,39 @@ const Box = styled.div`
 `;
 
 function CheckinBooking() {
-  const moveBack = useMoveBack();
+  const [confirmPaid, setConfirmPaid] = useState(false);
+  const { booking, isLoading, error } = useBooking();
 
-  const booking = {};
+  useEffect(() => {
+    setConfirmPaid(booking?.isPaid ?? false);
+  }, [booking]);
+
+  const moveBack = useMoveBack();
+  const { checkin, isCheckingIn } = useCheckin();
+
+  if (isLoading) return <Spinner />;
+  if (error)
+    return (
+      <div style={{ padding: "2rem", color: "red" }}>
+        Could not load booking. Please try again.
+      </div>
+    );
+  if (!booking)
+    return <div style={{ padding: "2rem" }}>Booking not found.</div>;
 
   const {
     id: bookingId,
-    guests,
+    Guests,
     totalPrice,
     numGuests,
     hasBreakfast,
     numNights,
   } = booking;
 
-  function handleCheckin() {}
+  function handleCheckin() {
+    if (!confirmPaid) return;
+    checkin(bookingId);
+  }
 
   return (
     <>
@@ -42,8 +77,22 @@ function CheckinBooking() {
 
       <BookingDataBox booking={booking} />
 
+      <Box>
+        <Checkbox
+          checked={confirmPaid}
+          onChange={() => setConfirmPaid((confirm) => !confirm)}
+          disabled={confirmPaid || isCheckingIn}
+          id="confirm"
+        >
+          I confirm that <GuestName>{Guests.fullName}</GuestName> has paid the
+          total amount of <Highlight>{formatCurrency(totalPrice)}</Highlight>
+        </Checkbox>
+      </Box>
+
       <ButtonGroup>
-        <Button onClick={handleCheckin}>Check in booking #{bookingId}</Button>
+        <Button onClick={handleCheckin} disabled={!confirmPaid || isCheckingIn}>
+          Check in booking #{bookingId}
+        </Button>
         <Button variation="secondary" onClick={moveBack}>
           Back
         </Button>
