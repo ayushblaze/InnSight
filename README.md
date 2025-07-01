@@ -1,6 +1,5 @@
 <p align="center">
-  <img src="public/InnSight-Icon.png" alt="InnSight Logo" width="80" style="vertical-align:middle; margin-right: 16px;"/>
-  <span style="font-size:2.5rem; font-weight:700; vertical-align:middle;">InnSight</span>
+  <img src="public/InnSight-Icon.png" alt="InnSight Logo" width="180" height="180" style="vertical-align:middle; margin-right: 16px;"/>
 </p>
 
 <p align="center">
@@ -57,7 +56,7 @@
 
 ## 🗄️ Database Schema
 
-### cabins
+### Cabins
 | Field         | Type    | Description                | Key         |
 |---------------|---------|----------------------------|-------------|
 | id            | int     | Unique cabin ID            | PK          |
@@ -68,7 +67,7 @@
 | image         | string  | Image URL                  |             |
 | description   | string  | Cabin description          |             |
 
-### guests
+### Guests
 | Field         | Type    | Description                | Key         |
 |---------------|---------|----------------------------|-------------|
 | id            | int     | Unique guest ID            | PK          |
@@ -78,7 +77,7 @@
 | nationalID    | string  | National ID/passport       |             |
 | countryFlag   | string  | Flag image URL             |             |
 
-### bookings
+### Bookings
 | Field         | Type    | Description                | Key         |
 |---------------|---------|----------------------------|-------------|
 | id            | int     | Unique booking ID          | PK          |
@@ -131,7 +130,7 @@
 
 ## 🎬 Demo
 
-> _No screenshots or video demo found. To add, place images or a video in the `public/` folder and update this section!_
+> _Coming Soon!_
 
 ---
 
