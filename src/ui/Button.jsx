@@ -54,6 +54,10 @@ const Button = styled.button`
   box-shadow: var(--shadow-sm);
   cursor: pointer;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   ${(props) => sizes[props.size]}
   ${(props) => variations[props.variation]}
 `;

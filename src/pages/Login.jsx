@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import LoginForm from "../features/authentication/LoginForm";
+import Heading from "../ui/Heading";
+import Logo from "../ui/Logo";
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -10,8 +13,23 @@ const LoginLayout = styled.main`
   background-color: var(--color-grey-50);
 `;
 
+const CenteredHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+`;
+
 function Login() {
-  return <LoginLayout>Login</LoginLayout>;
+  return (
+    <LoginLayout>
+      <CenteredHeader>
+        <Logo />
+        <Heading as="h4">Log in to your account</Heading>
+      </CenteredHeader>
+      <LoginForm />
+    </LoginLayout>
+  );
 }
 
 export default Login;
