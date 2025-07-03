@@ -103,9 +103,18 @@
 
 ---
 
-## 🎬 Demo
+## 🎬 ScreenShots
 
-> _Coming Soon!_
+## Dashboard
+![Dashboard](https://github.com/user-attachments/assets/4bba8cc8-69ba-4e1a-950b-cbfc680dae78)
+
+
+
+## Bookings
+![screencapture-localhost-5173-bookings-2025-06-29-00_37_06](https://github.com/user-attachments/assets/2836430d-ebc3-4cd6-8e77-94de1e837e91)
+
+## Cabins
+![screencapture-localhost-5173-cabins-2025-06-29-00_38_01](https://github.com/user-attachments/assets/06673826-8d9e-49dc-80df-1beb93bb610d)
 
 ---
 
@@ -121,10 +130,7 @@
   - [Logout & Cache Management](#logout--cache-management)
   - [Error Boundaries & Edge Cases](#error-boundaries--edge-cases)
   - [Row-Level Security (RLS) in Supabase](#row-level-security-rls-in-supabase)
-- [Database Schemas](#database-schemas)
-- [Setup & Installation](#setup--installation)
 - [Usage / Quick Start](#usage--quick-start)
-- [Contributing](#contributing)
 
 ---
 
