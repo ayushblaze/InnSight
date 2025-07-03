@@ -54,6 +54,21 @@
 
 ---
 
+## 🎬 ScreenShots
+
+## Dashboard
+![Dashboard](https://github.com/user-attachments/assets/4bba8cc8-69ba-4e1a-950b-cbfc680dae78)
+
+
+
+## Bookings
+![screencapture-localhost-5173-bookings-2025-06-29-00_37_06](https://github.com/user-attachments/assets/2836430d-ebc3-4cd6-8e77-94de1e837e91)
+
+## Cabins
+![screencapture-localhost-5173-cabins-2025-06-29-00_38_01](https://github.com/user-attachments/assets/06673826-8d9e-49dc-80df-1beb93bb610d)
+
+---
+
 ## 🗄️ Database Schema
 
 ### Cabins
@@ -100,21 +115,6 @@
 - Add, edit, or delete cabins, manage bookings, and view guest information.
 - Use the dashboard for analytics and insights.
 - Update settings and user profile as needed.
-
----
-
-## 🎬 ScreenShots
-
-## Dashboard
-![Dashboard](https://github.com/user-attachments/assets/4bba8cc8-69ba-4e1a-950b-cbfc680dae78)
-
-
-
-## Bookings
-![screencapture-localhost-5173-bookings-2025-06-29-00_37_06](https://github.com/user-attachments/assets/2836430d-ebc3-4cd6-8e77-94de1e837e91)
-
-## Cabins
-![screencapture-localhost-5173-cabins-2025-06-29-00_38_01](https://github.com/user-attachments/assets/06673826-8d9e-49dc-80df-1beb93bb610d)
 
 ---
 
