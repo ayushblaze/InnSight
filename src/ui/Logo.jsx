@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useDarkMode } from "../context/DarkModeContext";
 
 const StyledLogo = styled.div`
   text-align: center;
@@ -10,9 +11,12 @@ const Img = styled.img`
 `;
 
 function Logo() {
+  const {isDarkMode} = useDarkMode();
+  const src = isDarkMode ? '/InnSight-dark.png' : '/InnSight-Icon.png';
+
   return (
     <StyledLogo>
-      <Img src="/InnSight-Icon.png" alt="Logo" />
+      <Img src={src} alt="Logo" />
     </StyledLogo>
   );
 }
