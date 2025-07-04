@@ -54,6 +54,21 @@
 
 ---
 
+## 🎬 ScreenShots
+
+## Dashboard
+![Dashboard](https://github.com/user-attachments/assets/4bba8cc8-69ba-4e1a-950b-cbfc680dae78)
+
+
+
+## Bookings
+![screencapture-localhost-5173-bookings-2025-06-29-00_37_06](https://github.com/user-attachments/assets/2836430d-ebc3-4cd6-8e77-94de1e837e91)
+
+## Cabins
+![screencapture-localhost-5173-cabins-2025-06-29-00_38_01](https://github.com/user-attachments/assets/06673826-8d9e-49dc-80df-1beb93bb610d)
+
+---
+
 ## 🗄️ Database Schema
 
 ### Cabins
@@ -93,31 +108,6 @@
 
 ---
 
-## ⚡ Setup & Installation
-
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/your-username/InnSight.git
-   cd InnSight
-   ```
-2. **Install dependencies:**
-   ```sh
-   npm install
-   ```
-3. **Configure environment variables:**
-   - Create a `.env` file in the root directory.
-   - Add your Supabase project URL and anon key:
-     ```env
-     VITE_SUPABASE_URL=your-supabase-url
-     VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
-     ```
-4. **Run the development server:**
-   ```sh
-   npm run dev
-   ```
-
----
-
 ## 🚀 Usage / Quick Start
 
 - Access the app at [http://localhost:5173](http://localhost:5173) after running the dev server.
@@ -125,25 +115,6 @@
 - Add, edit, or delete cabins, manage bookings, and view guest information.
 - Use the dashboard for analytics and insights.
 - Update settings and user profile as needed.
-
----
-
-## 🎬 Demo
-
-> _Coming Soon!_
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! To contribute:
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -m 'Add new feature'`)
-4. Push to the branch (`git push origin feature/your-feature`)
-5. Open a Pull Request
-
-Please follow the code style and add tests where appropriate.
 
 ---
 
@@ -159,10 +130,7 @@ Please follow the code style and add tests where appropriate.
   - [Logout & Cache Management](#logout--cache-management)
   - [Error Boundaries & Edge Cases](#error-boundaries--edge-cases)
   - [Row-Level Security (RLS) in Supabase](#row-level-security-rls-in-supabase)
-- [Database Schemas](#database-schemas)
-- [Setup & Installation](#setup--installation)
 - [Usage / Quick Start](#usage--quick-start)
-- [Contributing](#contributing)
 
 ---
 
@@ -277,60 +245,6 @@ Please follow the code style and add tests where appropriate.
 - **Security Best Practices:**  
   - All sensitive operations are protected by RLS.
   - The frontend never assumes access—authorization is always enforced at the database level.
-
----
-
-## Database Schemas
-
-### Cabins
-
-| Field         | Type    | Description                | Key         |
-|---------------|---------|----------------------------|-------------|
-| id            | int     | Unique cabin ID            | PK          |
-| name          | string  | Cabin name                 |             |
-| maxCapacity   | int     | Maximum guests allowed     |             |
-| regularPrice  | int     | Standard price per night   |             |
-| discount      | int     | Discounted amount          |             |
-| image         | string  | Image URL                  |             |
-| description   | string  | Cabin description          |             |
-
-### Guests
-
-| Field         | Type    | Description                | Key         |
-|---------------|---------|----------------------------|-------------|
-| id            | int     | Unique guest ID            | PK          |
-| fullName      | string  | Guest's full name          |             |
-| email         | string  | Email address              |             |
-| nationality   | string  | Country of origin          |             |
-| nationalID    | string  | National ID/passport       |             |
-| countryFlag   | string  | Flag image URL             |             |
-
-### Bookings
-
-| Field         | Type    | Description                | Key         |
-|---------------|---------|----------------------------|-------------|
-| id            | int     | Unique booking ID          | PK          |
-| created_at    | date    | Booking creation timestamp |             |
-| startDate     | date    | Check-in date              |             |
-| endDate       | date    | Check-out date             |             |
-| cabinId       | int     | Linked cabin               | FK → cabins |
-| guestId       | int     | Linked guest               | FK → guests |
-| hasBreakfast  | bool    | Breakfast included         |             |
-| observations  | string  | Special requests/notes     |             |
-| isPaid        | bool    | Payment status             |             |
-| numGuests     | int     | Number of guests           |             |
-
----
-
-## Usage / Quick Start
-
-- Access the app at [http://localhost:5173](http://localhost:5173) after running the dev server.
-- Sign up or log in to your account.
-- Add, edit, or delete cabins, manage bookings, and view guest information.
-- Use the dashboard for analytics and insights.
-- Update settings and user profile as needed.
-
----
 
 ---
 
