@@ -76,7 +76,7 @@ function Sidebar({ mobileOpen, onClose }) {
           <Logo />
         </LogoWrapper>
         <MainNav />
-        <Uploader />
+        {/* <Uploader /> */}
       </StyledSidebar>
     </>
   );
