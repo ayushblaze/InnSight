@@ -46,53 +46,70 @@ async function createBookings() {
     .from("Guests")
     .select("id")
     .order("id");
-  const allGuestIds = guestsIds.map((cabin) => cabin.id);
+  const allGuestIds = guestsIds.map((guest) => guest.id);
+
   const { data: cabinsIds } = await supabase
     .from("Cabins")
     .select("id")
     .order("id");
   const allCabinIds = cabinsIds.map((cabin) => cabin.id);
+  console.log("GuestsIds:", allGuestIds, "\nCabinIds:", allCabinIds);
 
-  const finalBookings = bookings.map((booking) => {
-    // Here relying on the order of cabins, as they don't have and ID yet
-    const cabin = cabins.at(booking.cabinId - 1);
-    const numNights = subtractDates(booking.endDate, booking.startDate);
-    const cabinPrice = numNights * (cabin.regularPrice - cabin.discount);
-    const extrasPrice = booking.hasBreakfast
-      ? numNights * 15 * booking.numGuests
-      : 0; // hardcoded breakfast price
-    const totalPrice = cabinPrice + extrasPrice;
+  const finalBookings = bookings
+    .map((booking) => {
+      // Calculate local cabin index: booking.cabinId (91-105) → 0-based index for cabins array
+      const cabinIndex = booking.cabinId - 91;
 
-    let status;
-    if (
-      isPast(new Date(booking.endDate)) &&
-      !isToday(new Date(booking.endDate))
-    )
-      status = "checked-out";
-    if (
-      isFuture(new Date(booking.startDate)) ||
-      isToday(new Date(booking.startDate))
-    )
-      status = "unconfirmed";
-    if (
-      (isFuture(new Date(booking.endDate)) ||
-        isToday(new Date(booking.endDate))) &&
-      isPast(new Date(booking.startDate)) &&
-      !isToday(new Date(booking.startDate))
-    )
-      status = "checked-in";
+      // Grab cabin data for pricing
+      const cabin = cabins.at(cabinIndex);
 
-    return {
-      ...booking,
-      numNights,
-      cabinPrice,
-      extrasPrice,
-      totalPrice,
-      guestId: allGuestIds.at(booking.guestId - 1),
-      cabinId: allCabinIds.at(booking.cabinId - 1),
-      status,
-    };
-  });
+      if (!cabin) {
+        console.error(
+          `Cabin not found for booking.cabinId: ${booking.cabinId}`
+        );
+        return null; // or throw error, depending on your needs
+      }
+
+      // Compute price
+      const numNights = subtractDates(booking.endDate, booking.startDate);
+      const cabinPrice = numNights * (cabin.regularPrice - cabin.discount);
+      const extrasPrice = booking.hasBreakfast
+        ? numNights * 1500 * booking.numGuests
+        : 0; // hardcoded breakfast price
+      const totalPrice = cabinPrice + extrasPrice;
+
+      // Determine booking status based on dates
+      let status;
+      if (
+        isPast(new Date(booking.endDate)) &&
+        !isToday(new Date(booking.endDate))
+      )
+        status = "checked-out";
+      else if (
+        isFuture(new Date(booking.startDate)) ||
+        isToday(new Date(booking.startDate))
+      )
+        status = "unconfirmed";
+      else if (
+        (isFuture(new Date(booking.endDate)) ||
+          isToday(new Date(booking.endDate))) &&
+        isPast(new Date(booking.startDate)) &&
+        !isToday(new Date(booking.startDate))
+      )
+        status = "checked-in";
+
+      return {
+        ...booking,
+        numNights,
+        cabinPrice,
+        extrasPrice,
+        totalPrice,
+        guestId: allGuestIds.at(booking.guestId % allGuestIds.length), // safeguard if guestId overflows
+        cabinId: allCabinIds.at(cabinIndex), // map correctly to Supabase cabin ID
+        status,
+      };
+    })
+    .filter(Boolean);
 
   console.log(finalBookings);
 

@@ -1,6 +1,106 @@
-// Search for: 'jo', 'fa', 'mar', 'emm', 'ah'
-
 export const guests = [
+  {
+    fullName: 'Nisha Verma',
+    email: 'nisha.verma@gmail.com',
+    nationality: 'India',
+    nationalID: 'IN1001015',
+    countryFlag: 'https://flagcdn.com/in.svg',
+  },
+  {
+    fullName: 'Rajeev Kapoor',
+    email: 'rajeev.kapoor@gmail.com',
+    nationality: 'India',
+    nationalID: 'IN1001016',
+    countryFlag: 'https://flagcdn.com/in.svg',
+  },
+  {
+    fullName: 'Siddharth Rao',
+    email: 'siddharth.rao@gmail.com',
+    nationality: 'India',
+    nationalID: 'IN1001017',
+    countryFlag: 'https://flagcdn.com/in.svg',
+  },
+  {
+    fullName: 'Pooja Sharma',
+    email: 'pooja.sharma@gmail.com',
+    nationality: 'India',
+    nationalID: 'IN1001018',
+    countryFlag: 'https://flagcdn.com/in.svg',
+  },
+
+  // New guests from different nationalities
+  {
+    fullName: 'John Smith',
+    email: 'john.smith@gmail.com',
+    nationality: 'United States',
+    nationalID: 'US5678910',
+    countryFlag: 'https://flagcdn.com/us.svg',
+  },
+  {
+    fullName: 'Fatima Al-Farsi',
+    email: 'fatima.alfarsi@gmail.com',
+    nationality: 'United Arab Emirates',
+    nationalID: 'AE1029384',
+    countryFlag: 'https://flagcdn.com/ae.svg',
+  },
+  {
+    fullName: 'Akira Tanaka',
+    email: 'akira.tanaka@gmail.com',
+    nationality: 'Japan',
+    nationalID: 'JP5678912',
+    countryFlag: 'https://flagcdn.com/jp.svg',
+  },
+  {
+    fullName: 'Sofia Rossi',
+    email: 'sofia.rossi@gmail.com',
+    nationality: 'Italy',
+    nationalID: 'IT1092837',
+    countryFlag: 'https://flagcdn.com/it.svg',
+  },
+  {
+    fullName: 'Lucas Müller',
+    email: 'lucas.muller@gmail.com',
+    nationality: 'Germany',
+    nationalID: 'DE1234987',
+    countryFlag: 'https://flagcdn.com/de.svg',
+  },
+  {
+    fullName: 'Isabella Martinez',
+    email: 'isabella.martinez@gmail.com',
+    nationality: 'Mexico',
+    nationalID: 'MX5678901',
+    countryFlag: 'https://flagcdn.com/mx.svg',
+  },
+  {
+    fullName: 'William Brown',
+    email: 'william.brown@gmail.com',
+    nationality: 'Australia',
+    nationalID: 'AU9876543',
+    countryFlag: 'https://flagcdn.com/au.svg',
+  },
+  {
+    fullName: 'Yara Haddad',
+    email: 'yara.haddad@gmail.com',
+    nationality: 'Lebanon',
+    nationalID: 'LB1029384',
+    countryFlag: 'https://flagcdn.com/lb.svg',
+  },
+  {
+    fullName: 'Elena Petrova',
+    email: 'elena.petrova@gmail.com',
+    nationality: 'Russia',
+    nationalID: 'RU8765432',
+    countryFlag: 'https://flagcdn.com/ru.svg',
+  },
+  {
+    fullName: 'Jean Dupont',
+    email: 'jean.dupont@gmail.com',
+    nationality: 'France',
+    nationalID: 'FR3456789',
+    countryFlag: 'https://flagcdn.com/fr.svg',
+  },
+
+  // Existing guests remain unchanged below
   {
     fullName: 'Emma Watson',
     email: 'emma@gmail.com',
@@ -46,29 +146,29 @@ export const guests = [
 
   // Indian guests
   {
-    fullName: 'Harshika Singh',
-    email: 'harshika.sharma@gmail.com',
+    fullName: 'Vishal Pandey',
+    email: 'vishal.pandey@gmail.com',
     nationality: 'India',
     nationalID: 'IN1001001',
     countryFlag: 'https://flagcdn.com/in.svg',
   },
   {
-    fullName: 'Kushagra Singh',
-    email: 'kushagra.singh@gmail.com',
+    fullName: 'Kushagra Gaur',
+    email: 'kushagra.gaur@gmail.com',
     nationality: 'India',
     nationalID: 'IN1001002',
     countryFlag: 'https://flagcdn.com/in.svg',
   },
   {
-    fullName: 'Gungun Verma',
-    email: 'gungun.verma@gmail.com',
+    fullName: 'Gungun Singh',
+    email: 'gungun.singh@gmail.com',
     nationality: 'India',
     nationalID: 'IN1001003',
     countryFlag: 'https://flagcdn.com/in.svg',
   },
   {
-    fullName: 'Geeta Rani',
-    email: 'geeta.rani@gmail.com',
+    fullName: 'Geeta Singh',
+    email: 'geeta.singh@gmail.com',
     nationality: 'India',
     nationalID: 'IN1001004',
     countryFlag: 'https://flagcdn.com/in.svg',
