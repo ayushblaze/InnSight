@@ -57,15 +57,24 @@
 ## 🎬 ScreenShots
 
 ## Dashboard
+- Dark Mode
 ![Dashboard](https://github.com/user-attachments/assets/4bba8cc8-69ba-4e1a-950b-cbfc680dae78)
-
-
+- Light Mode
+![Dashboard](https://github.com/user-attachments/assets/556157df-1a51-48d6-b1bf-6c1798f8fe06)
 
 ## Bookings
+- Dark Mode
 ![screencapture-localhost-5173-bookings-2025-06-29-00_37_06](https://github.com/user-attachments/assets/2836430d-ebc3-4cd6-8e77-94de1e837e91)
+- Light Mode
+![screencapture-localhost-5173-bookings-2025-07-04-09_18_12](https://github.com/user-attachments/assets/1ac7e1eb-fb39-4998-88c0-3832e5f83a03)
 
 ## Cabins
+- Dark Mode
 ![screencapture-localhost-5173-cabins-2025-06-29-00_38_01](https://github.com/user-attachments/assets/06673826-8d9e-49dc-80df-1beb93bb610d)
+- Light Mode
+![screencapture-localhost-5173-cabins-2025-07-04-09_19_05](https://github.com/user-attachments/assets/e7408d83-ebad-4b7e-9e9f-a976f919275d)
+
+
 
 ---
 
