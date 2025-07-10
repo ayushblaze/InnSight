@@ -143,7 +143,7 @@
 
 ---
 
-## Features
+## Features & Best Practices
 
 - **Compound Components & Render Props:** Flexible UI architecture using compound components (e.g., `Table.Header`, `Table.Body`) and render props for extensibility.
 - **Real-Time Data Sync:** Live updates and instant feedback powered by Supabase's real-time capabilities.
