@@ -2,10 +2,11 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getBookings } from "../../services/apiBookings";
 import { useSearchParams } from "react-router-dom";
 import { PAGE_SIZE } from "../../utils/constants";
+import { useEffect } from "react";
 
 export function useBookings() {
   const queryClient = useQueryClient();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // Filter
   const filterValue = searchParams.get("status");
@@ -20,12 +21,13 @@ export function useBookings() {
   const sortBy = { field, direction };
 
   // Pagination
-  let page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
+  const parsedPage = Number(searchParams.get("page"));
+  const page = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 
   // Query
   const {
     isLoading,
-    data: { data: bookings, count } = {},
+    data: { data: bookings, count } = { data: [], count: 0 },
     error,
   } = useQuery({
     queryKey: ["bookings", filter, sortBy, page],
@@ -33,27 +35,32 @@ export function useBookings() {
   });
 
   // Calculate pageCount after getting count
-  const pageCount = Math.ceil(count / PAGE_SIZE) || 1;
+  const safeCount = count ?? 0;
+  const pageCount = Math.max(1, Math.ceil(safeCount / PAGE_SIZE));
 
-  // If page is out of bounds (e.g., after filtering), reset to 1
-  if (page > pageCount && pageCount > 0) {
-    page = 1;
-    searchParams.set("page", "1");
-    window.history.replaceState(null, '', `${window.location.pathname}?${searchParams.toString()}`);
-  }
+  // Keep URL page in valid range after filtering or deletion.
+  useEffect(() => {
+    if (page > pageCount) {
+      const nextParams = new URLSearchParams(searchParams);
+      nextParams.set("page", "1");
+      setSearchParams(nextParams, { replace: true });
+    }
+  }, [page, pageCount, searchParams, setSearchParams]);
 
   // Pre-fetching
-  if (page < pageCount)
-    queryClient.prefetchQuery({
-      queryKey: ["bookings", filter, sortBy, page + 1],
-      queryFn: () => getBookings({ filter, sortBy, page: page + 1 }),
-    });
+  useEffect(() => {
+    if (page < pageCount)
+      queryClient.prefetchQuery({
+        queryKey: ["bookings", filter, sortBy, page + 1],
+        queryFn: () => getBookings({ filter, sortBy, page: page + 1 }),
+      });
 
-  if (page > 1)
-    queryClient.prefetchQuery({
-      queryKey: ["bookings", filter, sortBy, page - 1],
-      queryFn: () => getBookings({ filter, sortBy, page: page - 1 }),
-    });
+    if (page > 1)
+      queryClient.prefetchQuery({
+        queryKey: ["bookings", filter, sortBy, page - 1],
+        queryFn: () => getBookings({ filter, sortBy, page: page - 1 }),
+      });
+  }, [queryClient, filter, sortBy, page, pageCount]);
 
-  return { isLoading, error, bookings, count };
+  return { isLoading, error, bookings, count: safeCount };
 }

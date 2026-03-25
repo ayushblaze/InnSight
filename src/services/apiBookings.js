@@ -6,7 +6,7 @@ export async function getBookings({ filter, sortBy, page }) {
   let query = supabase
     .from("Bookings")
     .select(
-      "id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, Cabins(name), Guests(fullName, email)",
+      "id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, Cabins:cabins(name), Guests:guests(fullName, email)",
       { count: "exact" }
     );
 
@@ -39,7 +39,7 @@ export async function getBookings({ filter, sortBy, page }) {
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("Bookings")
-    .select("*, Cabins(*), Guests(*)")
+    .select("*, Cabins:cabins(*), Guests:guests(*)")
     .eq("id", id)
     .single();
   
@@ -72,7 +72,7 @@ export async function getStaysAfterDate(date) {
   const { data, error } = await supabase
     .from("Bookings")
     // .select('*')
-    .select("*, Guests(fullName)")
+    .select("*, Guests:guests(fullName)")
     .gte("startDate", date)
     .lte("startDate", getToday());
 
@@ -88,7 +88,7 @@ export async function getStaysAfterDate(date) {
 export async function getStaysTodayActivity() {
   const { data, error } = await supabase
     .from("Bookings")
-    .select("*, Guests(fullName, nationality, countryFlag)")
+    .select("*, Guests:guests(fullName, nationality, countryFlag)")
     .or(
       `and(status.eq.unconfirmed,startDate.eq.${getToday()}),and(status.eq.checked-in,endDate.eq.${getToday()}),and(status.eq.checked-out,endDate.eq.${getToday()})`
     )
@@ -112,13 +112,13 @@ export async function updateBooking(id, obj) {
     .update(obj)
     .eq("id", id)
     .select()
-    .single();
+    .maybeSingle();
 
   if (error) {
     console.error(error);
     throw new Error("Booking could not be updated");
   }
-  return data;
+  return data ?? { id, ...obj };
 }
 
 export async function deleteBooking(id) {

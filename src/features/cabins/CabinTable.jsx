@@ -23,7 +23,7 @@ const TableHeader = styled.header`
 `;
 
 function CabinTable() {
-  const { isLoading, cabins } = useCabins();
+  const { isLoading, cabins = [] } = useCabins();
   const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;

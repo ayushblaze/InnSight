@@ -14,9 +14,9 @@ export function useLogin() {
       console.log(user);
       navigate("/dashboard", {replace: true});
     },
-    onError: err => {
+    onError: (err) => {
       console.log("useLogin error:", err);
-      toast.error("Provided email and password are incorrect");
+      toast.error(err?.message || "Login failed. Please check credentials and Supabase config");
     },
   });
 

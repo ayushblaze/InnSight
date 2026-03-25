@@ -3,11 +3,18 @@ import Stat from "./Stat";
 import { formatCurrency } from "../../utils/helpers";
 
 function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
-  const numBookings = bookings.length;
-  const sales = bookings.reduce((acc, cur) => acc + cur.totalPrice, 0);
-  const checkins = confirmedStays.length;
+  const safeBookings = bookings ?? [];
+  const safeConfirmedStays = confirmedStays ?? [];
+
+  const numBookings = safeBookings.length;
+  const sales = safeBookings.reduce((acc, cur) => acc + cur.totalPrice, 0);
+  const checkins = safeConfirmedStays.length;
   console.log("CheckIns:", checkins, "numDays:", numDays, "cabinCount:", cabinCount);
-  const occupantion = Number(confirmedStays.reduce((acc, cur) => acc + cur.numNights, 0)) / (numDays * cabinCount);
+  const denominator = numDays * (cabinCount || 0);
+  const occupantion = denominator
+    ? Number(safeConfirmedStays.reduce((acc, cur) => acc + cur.numNights, 0)) /
+      denominator
+    : 0;
 
   return (
     <>

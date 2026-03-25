@@ -67,18 +67,21 @@ function Pagination({ count }) {
     ? 1
     : Number(searchParams.get("page"));
 
-  const pageCount = Math.ceil(count / PAGE_SIZE);
+  const safeCount = count ?? 0;
+  const pageCount = Math.ceil(safeCount / PAGE_SIZE);
 
   function nextPage() {
     const next = currentPage === pageCount ? currentPage : currentPage + 1;
-    searchParams.set("page", next);
-    setSearchParams(searchParams);
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set("page", String(next));
+    setSearchParams(nextParams);
   }
 
   function prevPage() {
     const prev = currentPage === 1 ? currentPage : currentPage - 1;
-    searchParams.set("page", prev);
-    setSearchParams(searchParams);
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set("page", String(prev));
+    setSearchParams(nextParams);
   }
 
   if (pageCount <= 1) return null;
@@ -90,7 +93,7 @@ function Pagination({ count }) {
         <span>
           {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
         </span>{" "}
-        of <span>{count}</span> results
+        of <span>{safeCount}</span> results
       </P>
 
       <Buttons>
